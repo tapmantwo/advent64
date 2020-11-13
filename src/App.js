@@ -119,7 +119,7 @@ class DoorList extends React.Component {
               let i = row * 5 + col
               let d = this.state.doors[i]
               return (
-                <Col>
+                <Col key={`row${row}-col${col}`}>
                   <Door key={d.day} door={d} showModal={this.state.showModal} />
                 </Col>
               )
@@ -185,7 +185,16 @@ function NewWindow() {
 
 function App() {
   const [show, setShow] = React.useState(false);
+  const [showWelcome, setShowWelcome] = React.useState(false);
   const [door, setDoor] = React.useState();
+
+  React.useEffect(() => {
+    if (!storage.getItem('seenWelcome')) {
+      storage.setItem('seenWelcome', 1);
+      setShowWelcome(true);
+    }
+  });
+
   return (
     <div className="App">
       <DoorList doors={config} showModal={(d) => {setDoor(d); setShow(true)}} />
@@ -227,6 +236,33 @@ function App() {
               </Col>
             </Row>
           </Container>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={showWelcome}
+        onHide={() => setShowWelcome(false)}
+        dialogClassName="modal-90w"
+        aria-labelledby="welcome"
+        centered
+        backdrop="static"
+        size="lg"
+        >
+        <Modal.Header closeButton>
+          <Modal.Title>
+            FREEZE64 2020 Advent Calendar
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="show-grid">
+          <p>
+        Greetings FREEZE64 Readers! Welcome to the FREEZE64 advent calendar.
+          </p>
+          <p>
+            Each day during December 2020 you will be able to open the corresponding advent door to reveal a past issue of FREEZE64, and we’ll also recommend a Commodore 64 game for you to play. Load up the recommended game in your C64 and then pop on to Twitter or Facebook and share your gameplay videos and photos with the FREEZE64 community - remember to tag #FREEZE64 and 
+@FREEZE64UK and we’ll make sure that we share them with our many followers.
+          </p>
+          <p>
+            Enjoy the selection, have fun playing the games, and Merry Christmas from FREEZE64.
+          </p>
         </Modal.Body>
       </Modal>
     </div>
