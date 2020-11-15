@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/advent64/static/css/main.e7b337ca.chunk.css",
-    "main.js": "/advent64/static/js/main.0b5ef4e5.chunk.js",
-    "main.js.map": "/advent64/static/js/main.0b5ef4e5.chunk.js.map",
+    "main.css": "/advent64/static/css/main.48207c17.chunk.css",
+    "main.js": "/advent64/static/js/main.1654787c.chunk.js",
+    "main.js.map": "/advent64/static/js/main.1654787c.chunk.js.map",
     "runtime-main.js": "/advent64/static/js/runtime-main.c7fea8d1.js",
     "runtime-main.js.map": "/advent64/static/js/runtime-main.c7fea8d1.js.map",
     "static/js/2.2d859915.chunk.js": "/advent64/static/js/2.2d859915.chunk.js",
     "static/js/2.2d859915.chunk.js.map": "/advent64/static/js/2.2d859915.chunk.js.map",
     "index.html": "/advent64/index.html",
-    "static/css/main.e7b337ca.chunk.css.map": "/advent64/static/css/main.e7b337ca.chunk.css.map",
-    "static/js/2.2d859915.chunk.js.LICENSE.txt": "/advent64/static/js/2.2d859915.chunk.js.LICENSE.txt"
+    "static/css/main.48207c17.chunk.css.map": "/advent64/static/css/main.48207c17.chunk.css.map",
+    "static/js/2.2d859915.chunk.js.LICENSE.txt": "/advent64/static/js/2.2d859915.chunk.js.LICENSE.txt",
+    "static/media/freezelogo.3dba1aaa.png": "/advent64/static/media/freezelogo.3dba1aaa.png"
   },
   "entrypoints": [
     "static/js/runtime-main.c7fea8d1.js",
     "static/js/2.2d859915.chunk.js",
-    "static/css/main.e7b337ca.chunk.css",
-    "static/js/main.0b5ef4e5.chunk.js"
+    "static/css/main.48207c17.chunk.css",
+    "static/js/main.1654787c.chunk.js"
   ]
 }
