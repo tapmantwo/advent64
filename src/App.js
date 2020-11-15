@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './freezelogo.png';
+import santa from './fc2.png';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components'
 import {Modal, Row,Col,Container} from 'react-bootstrap'
@@ -17,7 +18,7 @@ const config = [
   {day:10, title:"Mayhem in Monsterland", imageUrl:"https://freeze64.files.wordpress.com/2017/05/freeze64-cover-10.png", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=mayhem+in+monsterland&Go.x=0&Go.y=0", developer: "Apex Computer Productions", year: "1993", buyUrl:"https://freeze64.com/freeze64-issue-10/", blurb:"To celebrate our first birthday and also the 10th issue of FREEZE64, we recommend you spend the day playing one of our all time favourite Commodore 64 games, Mayhem in Monsterland by Apex from 1993. The perfect C64 arcade platformer. Read issue 10 <a href=\"http://freeze64.com/freeze64-issue-10/\" target=\"_new\">here</a>"},
   {day:20, title:"Bounder", imageUrl:"https://freeze64.files.wordpress.com/2018/06/freeze64-cover-issue-20.png", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=Bounder&Go.x=0&Go.y=0", developer: "Gremlin Graphics", year: "1985", buyUrl:"https://freeze64.wordpress.com/freeze64-issue-20/"},
   {day:11, title:"Gribbly’s Day Out", imageUrl:"https://freeze64.files.wordpress.com/2017/05/freeze64-cover-11.png", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=gribbly%27s+day+out&Go.x=0&Go.y=0", developer: "Hewson Consultants", year: "1985", buyUrl:"https://freeze64.com/freeze64-issue-11/"},
-  {day:25, title:"Santa’s Xmas Caper", imageUrl:"http://www.gb64.com/Screenshots/S/Santa%27s_Christmas_Capers_1.png", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=Santa%27s+Christmas+Caper&Go.x=0&Go.y=0", developer: "Zeppelin Games", year: "1990", buyUrl:"", blurb:"Merry Christmas!"},
+  {day:25, title:"Santa’s Xmas Caper", imageUrl:"./25.jpg", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=Santa%27s+Christmas+Caper&Go.x=0&Go.y=0", developer: "Zeppelin Games", year: "1990", buyUrl:"", blurb:"Merry Christmas!"},
   {day:7, title:"Wizball", imageUrl:"https://freeze64.files.wordpress.com/2017/05/freeze64-cover-7.png", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=wizball&Go.x=0&Go.y=0", developer: "Ocean", year: "1987", buyUrl:"https://freeze64.com/freeze64-issue-7/"},
   {day:1, title:"Monty on the Run", imageUrl:"https://freeze64.files.wordpress.com/2017/05/cover1-1.png", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=monty+on+the+run&Go.x=5&Go.y=11", developer: "Gremlin Graphics", year: "1985", buyUrl:"https://freeze64.com/freeze64-issue-1/"},
   {day:24, title:"Stuntman Seymour", imageUrl:"https://freeze64.files.wordpress.com/2018/11/cover-issue-24.png", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=+%09+Stuntman+Seymour&Go.x=0&Go.y=0", developer: "Codemasters", year: "1992", buyUrl:"https://freeze64.wordpress.com/freeze64-issue-24/"},
@@ -98,7 +99,7 @@ function checkDay(day)
   if(storage.getItem("cheatmode")) {
     return true;
   }
-  const doorDate = new Date(2020, 10, day);
+  const doorDate = new Date(2020, 11, day);
    return doorDate <= new Date();
 }
 
@@ -190,12 +191,13 @@ function NewWindow() {
 const TopH1 = styled.h1`
  position:relative;
  font-family: 'Mountains of Christmas', cursive;
- font-size: 5vw;
  display:block;
 `
 
 const TopImage = styled.img`
  width:80%;
+ display:block;
+ margin:auto;
 `
 
 function ChristmasText(props) {
@@ -211,10 +213,18 @@ function Header(props) {
   return (
     <Container centered>
       <Row style={{alignItems: 'center'}}>
-        <Col><TopImage src={logo} alt="Logo" /></Col>
-        <Col><TopH1><ChristmasText text="Advent 2020"/></TopH1></Col>
+        <Col sm={true}><TopImage src={logo} alt="Logo" /></Col>
+        <Col sm={true}><TopH1><ChristmasText text="Advent 2020"/></TopH1></Col>
       </Row>
     </Container>);
+}
+
+function Footer(props) {
+  return (
+    <div class="footer">
+      <img src={santa} alt="santa"/>
+    </div>
+  )
 }
 
 function App() {
@@ -300,6 +310,7 @@ function App() {
           </p>
         </Modal.Body>
       </Modal>
+      <Footer/>
     </div>
   );
 }
