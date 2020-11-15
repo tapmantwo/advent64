@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from './freezelogo.png';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components'
 import {Modal, Row,Col,Container} from 'react-bootstrap'
@@ -66,7 +67,8 @@ const ClosedDoor = styled.div`
   color: white;
   text-align:center;
   width:100%;
-  top:calc(50% - 2.5rem);
+  top:calc(50% - 5vw);
+  font-size:7vw;
   left:0;
  }
 `
@@ -93,6 +95,9 @@ const ModalImage = styled.div`
 
 function checkDay(day)
 {
+  if(storage.getItem("cheatmode")) {
+    return true;
+  }
   const doorDate = new Date(2020, 10, day);
    return doorDate <= new Date();
 }
@@ -111,8 +116,7 @@ class DoorList extends React.Component {
     const rows = [0,1,2,3,4]
 
     return (
-      <Container fluid style={{maxWidth:640, position: 'absolute', left: '50%', top: '50%',
-        transform: 'translate(-50%, -50%)'}}>
+      <Container style={{maxWidth:640}}>
         {rows.map((_,row) => (
           <Row noGutters>
             {cols.map((__, col) => {
@@ -171,7 +175,7 @@ class Door extends React.Component {
 
   return (
     <ClosedDoor onClick={() => this.openDoor()}>
-      <h1>{this.state.door.day}</h1>
+      <h1><ChristmasText text={this.state.door.day}/></h1>
     </ClosedDoor>
   )
  }
@@ -181,6 +185,36 @@ function NewWindow() {
   return (
     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"></path></svg>
   )
+}
+
+const TopH1 = styled.h1`
+ position:relative;
+ font-family: 'Mountains of Christmas', cursive;
+ font-size: 5vw;
+ display:block;
+`
+
+const TopImage = styled.img`
+ width:80%;
+`
+
+function ChristmasText(props) {
+  let parts = String(props.text).split("").map(function(v, i) {
+    return (<span class={i % 2 == 0 ? "christmas-gold" : "christmas-blue"}>{v}</span>);
+  })
+  return (
+    <span>{parts}</span>
+  );
+};
+
+function Header(props) {
+  return (
+    <Container centered>
+      <Row style={{alignItems: 'center'}}>
+        <Col><TopImage src={logo} alt="Logo" /></Col>
+        <Col><TopH1><ChristmasText text="Advent 2020"/></TopH1></Col>
+      </Row>
+    </Container>);
 }
 
 function App() {
@@ -197,6 +231,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header/>
       <DoorList doors={config} showModal={(d) => {setDoor(d); setShow(true)}} />
       <Modal
         show={show}
