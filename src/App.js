@@ -18,7 +18,7 @@ const config = [
   {day:10, title:"Mayhem in Monsterland", imageUrl:"https://freeze64.files.wordpress.com/2017/05/freeze64-cover-10.png", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=mayhem+in+monsterland&Go.x=0&Go.y=0", developer: "Apex Computer Productions", year: "1993", buyUrl:"https://freeze64.com/freeze64-issue-10/", blurb:"To celebrate our first birthday and also the 10th issue of FREEZE64, we recommend you spend the day playing one of our all time favourite Commodore 64 games, Mayhem in Monsterland by Apex from 1993. The perfect C64 arcade platformer. Read issue 10 <a href=\"http://freeze64.com/freeze64-issue-10/\" target=\"_new\">here</a>"},
   {day:20, title:"Bounder", imageUrl:"https://freeze64.files.wordpress.com/2018/06/freeze64-cover-issue-20.png", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=Bounder&Go.x=0&Go.y=0", developer: "Gremlin Graphics", year: "1985", buyUrl:"https://freeze64.wordpress.com/freeze64-issue-20/"},
   {day:11, title:"Gribbly’s Day Out", imageUrl:"https://freeze64.files.wordpress.com/2017/05/freeze64-cover-11.png", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=gribbly%27s+day+out&Go.x=0&Go.y=0", developer: "Hewson Consultants", year: "1985", buyUrl:"https://freeze64.com/freeze64-issue-11/"},
-  {day:25, title:"Santa’s Xmas Caper", imageUrl:"./25.jpg", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=Santa%27s+Christmas+Caper&Go.x=0&Go.y=0", developer: "Zeppelin Games", year: "1990", buyUrl:"", blurb:"Merry Christmas!"},
+  {day:25, title:"Santa’s Xmas Caper", imageUrl:"./25.jpg", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=Santa%27s+Christmas+Caper&Go.x=0&Go.y=0", developer: "Zeppelin Games", year: "1990", buyUrl:"", blurb:"<p>Wishing you all a MERRY CHRISTMAS!</p><p>Thank you to all my wonderful FREEZE64 subscribers and readers who have continued to support my humble, little fanzine throughout 2020. You have all been incredibly supportive and kind. There’s so much more to come, so roll on 2021 and beyond!</p><p>MERRY CHRISTMAS!</p><p>Love from Vinny at FREEZE64.</p>"},
   {day:7, title:"Wizball", imageUrl:"https://freeze64.files.wordpress.com/2017/05/freeze64-cover-7.png", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=wizball&Go.x=0&Go.y=0", developer: "Ocean", year: "1987", buyUrl:"https://freeze64.com/freeze64-issue-7/"},
   {day:1, title:"Monty on the Run", imageUrl:"https://freeze64.files.wordpress.com/2017/05/cover1-1.png", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=monty+on+the+run&Go.x=5&Go.y=11", developer: "Gremlin Graphics", year: "1985", buyUrl:"https://freeze64.com/freeze64-issue-1/"},
   {day:24, title:"Stuntman Seymour", imageUrl:"https://freeze64.files.wordpress.com/2018/11/cover-issue-24.png", downloadUrl:"https://csdb.dk/search/?seinsel=releases&search=+%09+Stuntman+Seymour&Go.x=0&Go.y=0", developer: "Codemasters", year: "1992", buyUrl:"https://freeze64.wordpress.com/freeze64-issue-24/"},
@@ -47,7 +47,7 @@ for(let door of config) {
   }
 
   if(!door.blurb) {
-    door.blurb = `Today’s FREEZE64 advent selection is ${door.title} by ${door.developer} from ${door.year}. Read about the game in FREEZE64 issue ${door.day} <a href="${door.buyUrl}" target="_new">here <NewWindow/></a>`
+    door.blurb = `<p>Today’s FREEZE64 advent selection is ${door.title} by ${door.developer} from ${door.year}. Read about the game in FREEZE64 issue ${door.day} <a href="${door.buyUrl}" target="_new">here <NewWindow/></a></p><p>Load up the game and then pop onto Twitter or Facebook and share your gameplay videos and photos with the FREEZE64 community. Remember to tag #FREEZE64 and @FREEZE64UK and we’ll make sure that we share them with our many followers. Enjoy!</p>`
   }
 }
 
@@ -268,13 +268,9 @@ function App() {
               <Col>
               {door && (
                 <>
-                  <p dangerouslySetInnerHTML={{__html: door.blurb}} />
+                  <span dangerouslySetInnerHTML={{__html: door.blurb}} />
                   <p>
-                    Don't forget to pop onto Twitter or Facebook and share your gameplay videos and photos with the FREEZE64 community. Remember to tag #FREEZE64 and 
-                    @FREEZE64UK and we’ll make sure that we share them with our many followers. Enjoy!
-                  </p>
-                  <p>
-                    <a href={door.downloadUrl}>Find it on csdb <NewWindow/></a>
+                    <a href={door.downloadUrl}>Find {door.title} on csdb <NewWindow/></a>
                   </p>
                 </>
               )}
